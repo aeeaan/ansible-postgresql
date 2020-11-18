@@ -1,2 +1,34 @@
 ---
-# tasks file for correcthorse.postgresql
+- name: Install postgresql
+  dnf:
+    name: '@postgresql:{{ postgresql_version }}/{{ postgresql_profile }}'
+    state: present
+  tags:
+    - postgresql
+    - packages
+
+- name: Install postgresql devel
+  dnf:
+    name: libpq-devel
+    state: present
+  tags:
+    - postgresql
+    - packages
+
+- name: Initialize database
+  command:
+    cmd: /usr/bin/postgresql-setup --initdb
+    creates: /var/lib/pgsql/data/PG_VERSION
+  tags:
+    - postgresql
+    - configuration
+
+- name: Make sure postgresql is enabled and running
+  service:
+    name: postgresql
+    enabled: yes
+    state: started
+  tags:
+    - postgresql
+    - configuration
+    - services
