@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Josh Rusch
+  description:
+  company:
+  license: MIT
+  min_ansible_version: 2.10.3
+  platforms:
+  - name: EL
+    versions:
+    - 7
+    - 6
+  categories:
+  - database
+  - database:sql
+  galaxy_tags: []
+
+dependencies: []
