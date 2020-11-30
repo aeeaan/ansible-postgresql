@@ -19,6 +19,7 @@
   command:
     cmd: /usr/bin/postgresql-setup --initdb
     creates: /var/lib/pgsql/data/PG_VERSION
+  when: postgresql_profile == 'server'
   tags:
     - postgresql
     - configuration
@@ -28,6 +29,7 @@
     name: postgresql
     enabled: yes
     state: started
+  when: postgresql_profile == 'server'
   tags:
     - postgresql
     - configuration
